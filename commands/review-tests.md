@@ -3,6 +3,7 @@ description: "Find coverage gaps, test antipatterns, and missing test cases in c
 argument-hint: "[optional focus area or file paths]"
 context: fork
 agent: test-reviewer
+disable-model-invocation: true
 ---
 
 Review the following code changes. Return your findings as JSON.
