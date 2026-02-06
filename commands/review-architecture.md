@@ -3,7 +3,6 @@ description: "Check structural integrity, pattern consistency, and coupling in c
 argument-hint: "[optional focus area or file paths]"
 context: fork
 agent: architecture-reviewer
-disable-model-invocation: true
 ---
 
 Review the following code changes.

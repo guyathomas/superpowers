@@ -3,7 +3,6 @@ description: "Check WCAG accessibility, keyboard navigation, and UX patterns in 
 argument-hint: "[optional focus area or file paths]"
 context: fork
 agent: ui-reviewer
-disable-model-invocation: true
 ---
 
 Review the following code changes. Return your findings as JSON.
