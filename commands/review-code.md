@@ -1,10 +1,18 @@
 ---
-description: "Run the code-reviewer subagent to review completed work against your plan and coding standards."
+description: "Review completed work against your plan and coding standards."
 argument-hint: "[description of what was implemented, or path to plan]"
+context: fork
+agent: code-reviewer
+disable-model-invocation: true
 ---
 
-Dispatch the `code-reviewer` agent as a subagent (using the Task tool with `subagent_type` set to `code-reviewer`).
+Review the following code changes against the plan and coding standards.
 
-Pass it the current git diff (`git diff HEAD`) and the list of changed files, along with this context from the user: $ARGUMENTS
+## Changed files
+!`git diff --name-only HEAD`
 
-The code-reviewer checks plan alignment, code quality, architecture, documentation, and identifies issues by severity (Critical / Important / Suggestions).
+## Diff
+!`git diff HEAD`
+
+## Additional context
+$ARGUMENTS

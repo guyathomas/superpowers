@@ -1,10 +1,18 @@
 ---
-description: "Run the test-reviewer subagent to find coverage gaps, test antipatterns, and missing test cases."
+description: "Find coverage gaps, test antipatterns, and missing test cases in code changes."
 argument-hint: "[optional focus area or file paths]"
+context: fork
+agent: test-reviewer
+disable-model-invocation: true
 ---
 
-Dispatch the `test-reviewer` agent as a subagent (using the Task tool with `subagent_type` set to `test-reviewer`).
+Review the following code changes. Return your findings as JSON.
 
-First run `git diff HEAD` and `git diff --name-only HEAD` to get the diff and changed file list. Pass both to the subagent.
+## Changed files
+!`git diff --name-only HEAD`
 
-Additional context from the user: $ARGUMENTS
+## Diff
+!`git diff HEAD`
+
+## Additional context
+$ARGUMENTS

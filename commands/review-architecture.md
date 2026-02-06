@@ -1,10 +1,18 @@
 ---
-description: "Run the architecture-reviewer subagent to check structural integrity, pattern consistency, and coupling."
+description: "Check structural integrity, pattern consistency, and coupling in code changes."
 argument-hint: "[optional focus area or file paths]"
+context: fork
+agent: architecture-reviewer
+disable-model-invocation: true
 ---
 
-Dispatch the `architecture-reviewer` agent as a subagent (using the Task tool with `subagent_type` set to `architecture-reviewer`).
+Review the following code changes.
 
-First run `git diff HEAD` and `git diff --name-only HEAD` to get the diff and changed file list. Pass both to the subagent.
+## Changed files
+!`git diff --name-only HEAD`
 
-Additional context from the user: $ARGUMENTS
+## Diff
+!`git diff HEAD`
+
+## Additional context
+$ARGUMENTS

@@ -1,10 +1,18 @@
 ---
-description: "Run the ui-reviewer subagent to check WCAG accessibility, keyboard navigation, and UX patterns."
+description: "Check WCAG accessibility, keyboard navigation, and UX patterns in UI changes."
 argument-hint: "[optional focus area or file paths]"
+context: fork
+agent: ui-reviewer
+disable-model-invocation: true
 ---
 
-Dispatch the `ui-reviewer` agent as a subagent (using the Task tool with `subagent_type` set to `ui-reviewer`).
+Review the following code changes. Return your findings as JSON.
 
-First run `git diff HEAD` and `git diff --name-only HEAD` to get the diff and changed file list. Pass both to the subagent.
+## Changed files
+!`git diff --name-only HEAD`
 
-Additional context from the user: $ARGUMENTS
+## Diff
+!`git diff HEAD`
+
+## Additional context
+$ARGUMENTS

@@ -1,10 +1,18 @@
 ---
-description: "Run the tech-practices-reviewer subagent to check framework-specific best practices and deprecated APIs."
+description: "Check framework-specific best practices and deprecated API usage in code changes."
 argument-hint: "[optional focus area or file paths]"
+context: fork
+agent: tech-practices-reviewer
+disable-model-invocation: true
 ---
 
-Dispatch the `tech-practices-reviewer` agent as a subagent (using the Task tool with `subagent_type` set to `tech-practices-reviewer`).
+Review the following code changes. Return your findings as JSON.
 
-First run `git diff HEAD` and `git diff --name-only HEAD` to get the diff and changed file list. Pass both to the subagent.
+## Changed files
+!`git diff --name-only HEAD`
 
-Additional context from the user: $ARGUMENTS
+## Diff
+!`git diff HEAD`
+
+## Additional context
+$ARGUMENTS
