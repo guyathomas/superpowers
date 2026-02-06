@@ -1,13 +1,13 @@
-# Superpowers for OpenCode
+# Workflows for OpenCode
 
-Complete guide for using Superpowers with [OpenCode.ai](https://opencode.ai).
+Complete guide for using Workflows with [OpenCode.ai](https://opencode.ai).
 
 ## Quick Install
 
 Tell OpenCode:
 
 ```
-Clone https://github.com/obra/superpowers to ~/.config/opencode/superpowers, then create directory ~/.config/opencode/plugins, then symlink ~/.config/opencode/superpowers/.opencode/plugins/superpowers.js to ~/.config/opencode/plugins/superpowers.js, then symlink ~/.config/opencode/superpowers/skills to ~/.config/opencode/skills/superpowers, then restart opencode.
+Clone https://github.com/obra/workflows to ~/.config/opencode/workflows, then create directory ~/.config/opencode/plugins, then symlink ~/.config/opencode/workflows/.opencode/plugins/workflows.js to ~/.config/opencode/plugins/workflows.js, then symlink ~/.config/opencode/workflows/skills to ~/.config/opencode/skills/workflows, then restart opencode.
 ```
 
 ## Manual Installation
@@ -20,23 +20,23 @@ Clone https://github.com/obra/superpowers to ~/.config/opencode/superpowers, the
 ### macOS / Linux
 
 ```bash
-# 1. Install Superpowers (or update existing)
-if [ -d ~/.config/opencode/superpowers ]; then
-  cd ~/.config/opencode/superpowers && git pull
+# 1. Install Workflows (or update existing)
+if [ -d ~/.config/opencode/workflows ]; then
+  cd ~/.config/opencode/workflows && git pull
 else
-  git clone https://github.com/obra/superpowers.git ~/.config/opencode/superpowers
+  git clone https://github.com/obra/workflows.git ~/.config/opencode/workflows
 fi
 
 # 2. Create directories
 mkdir -p ~/.config/opencode/plugins ~/.config/opencode/skills
 
 # 3. Remove old symlinks/directories if they exist
-rm -f ~/.config/opencode/plugins/superpowers.js
-rm -rf ~/.config/opencode/skills/superpowers
+rm -f ~/.config/opencode/plugins/workflows.js
+rm -rf ~/.config/opencode/skills/workflows
 
 # 4. Create symlinks
-ln -s ~/.config/opencode/superpowers/.opencode/plugins/superpowers.js ~/.config/opencode/plugins/superpowers.js
-ln -s ~/.config/opencode/superpowers/skills ~/.config/opencode/skills/superpowers
+ln -s ~/.config/opencode/workflows/.opencode/plugins/workflows.js ~/.config/opencode/plugins/workflows.js
+ln -s ~/.config/opencode/workflows/skills ~/.config/opencode/skills/workflows
 
 # 5. Restart OpenCode
 ```
@@ -44,11 +44,11 @@ ln -s ~/.config/opencode/superpowers/skills ~/.config/opencode/skills/superpower
 #### Verify Installation
 
 ```bash
-ls -l ~/.config/opencode/plugins/superpowers.js
-ls -l ~/.config/opencode/skills/superpowers
+ls -l ~/.config/opencode/plugins/workflows.js
+ls -l ~/.config/opencode/skills/workflows
 ```
 
-Both should show symlinks pointing to the superpowers directory.
+Both should show symlinks pointing to the workflows directory.
 
 ### Windows
 
@@ -65,22 +65,22 @@ Pick your shell below: [Command Prompt](#command-prompt) | [PowerShell](#powersh
 Run as Administrator, or with Developer Mode enabled:
 
 ```cmd
-:: 1. Install Superpowers
-git clone https://github.com/obra/superpowers.git "%USERPROFILE%\.config\opencode\superpowers"
+:: 1. Install Workflows
+git clone https://github.com/obra/workflows.git "%USERPROFILE%\.config\opencode\workflows"
 
 :: 2. Create directories
 mkdir "%USERPROFILE%\.config\opencode\plugins" 2>nul
 mkdir "%USERPROFILE%\.config\opencode\skills" 2>nul
 
 :: 3. Remove existing links (safe for reinstalls)
-del "%USERPROFILE%\.config\opencode\plugins\superpowers.js" 2>nul
-rmdir "%USERPROFILE%\.config\opencode\skills\superpowers" 2>nul
+del "%USERPROFILE%\.config\opencode\plugins\workflows.js" 2>nul
+rmdir "%USERPROFILE%\.config\opencode\skills\workflows" 2>nul
 
 :: 4. Create plugin symlink (requires Developer Mode or Admin)
-mklink "%USERPROFILE%\.config\opencode\plugins\superpowers.js" "%USERPROFILE%\.config\opencode\superpowers\.opencode\plugins\superpowers.js"
+mklink "%USERPROFILE%\.config\opencode\plugins\workflows.js" "%USERPROFILE%\.config\opencode\workflows\.opencode\plugins\workflows.js"
 
 :: 5. Create skills junction (works without special privileges)
-mklink /J "%USERPROFILE%\.config\opencode\skills\superpowers" "%USERPROFILE%\.config\opencode\superpowers\skills"
+mklink /J "%USERPROFILE%\.config\opencode\skills\workflows" "%USERPROFILE%\.config\opencode\workflows\skills"
 
 :: 6. Restart OpenCode
 ```
@@ -90,22 +90,22 @@ mklink /J "%USERPROFILE%\.config\opencode\skills\superpowers" "%USERPROFILE%\.co
 Run as Administrator, or with Developer Mode enabled:
 
 ```powershell
-# 1. Install Superpowers
-git clone https://github.com/obra/superpowers.git "$env:USERPROFILE\.config\opencode\superpowers"
+# 1. Install Workflows
+git clone https://github.com/obra/workflows.git "$env:USERPROFILE\.config\opencode\workflows"
 
 # 2. Create directories
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.config\opencode\plugins"
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.config\opencode\skills"
 
 # 3. Remove existing links (safe for reinstalls)
-Remove-Item "$env:USERPROFILE\.config\opencode\plugins\superpowers.js" -Force -ErrorAction SilentlyContinue
-Remove-Item "$env:USERPROFILE\.config\opencode\skills\superpowers" -Force -ErrorAction SilentlyContinue
+Remove-Item "$env:USERPROFILE\.config\opencode\plugins\workflows.js" -Force -ErrorAction SilentlyContinue
+Remove-Item "$env:USERPROFILE\.config\opencode\skills\workflows" -Force -ErrorAction SilentlyContinue
 
 # 4. Create plugin symlink (requires Developer Mode or Admin)
-New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.config\opencode\plugins\superpowers.js" -Target "$env:USERPROFILE\.config\opencode\superpowers\.opencode\plugins\superpowers.js"
+New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.config\opencode\plugins\workflows.js" -Target "$env:USERPROFILE\.config\opencode\workflows\.opencode\plugins\workflows.js"
 
 # 5. Create skills junction (works without special privileges)
-New-Item -ItemType Junction -Path "$env:USERPROFILE\.config\opencode\skills\superpowers" -Target "$env:USERPROFILE\.config\opencode\superpowers\skills"
+New-Item -ItemType Junction -Path "$env:USERPROFILE\.config\opencode\skills\workflows" -Target "$env:USERPROFILE\.config\opencode\workflows\skills"
 
 # 6. Restart OpenCode
 ```
@@ -115,21 +115,21 @@ New-Item -ItemType Junction -Path "$env:USERPROFILE\.config\opencode\skills\supe
 Note: Git Bash's native `ln` command copies files instead of creating symlinks. Use `cmd //c mklink` instead (the `//c` is Git Bash syntax for `/c`).
 
 ```bash
-# 1. Install Superpowers
-git clone https://github.com/obra/superpowers.git ~/.config/opencode/superpowers
+# 1. Install Workflows
+git clone https://github.com/obra/workflows.git ~/.config/opencode/workflows
 
 # 2. Create directories
 mkdir -p ~/.config/opencode/plugins ~/.config/opencode/skills
 
 # 3. Remove existing links (safe for reinstalls)
-rm -f ~/.config/opencode/plugins/superpowers.js 2>/dev/null
-rm -rf ~/.config/opencode/skills/superpowers 2>/dev/null
+rm -f ~/.config/opencode/plugins/workflows.js 2>/dev/null
+rm -rf ~/.config/opencode/skills/workflows 2>/dev/null
 
 # 4. Create plugin symlink (requires Developer Mode or Admin)
-cmd //c "mklink \"$(cygpath -w ~/.config/opencode/plugins/superpowers.js)\" \"$(cygpath -w ~/.config/opencode/superpowers/.opencode/plugins/superpowers.js)\""
+cmd //c "mklink \"$(cygpath -w ~/.config/opencode/plugins/workflows.js)\" \"$(cygpath -w ~/.config/opencode/workflows/.opencode/plugins/workflows.js)\""
 
 # 5. Create skills junction (works without special privileges)
-cmd //c "mklink /J \"$(cygpath -w ~/.config/opencode/skills/superpowers)\" \"$(cygpath -w ~/.config/opencode/superpowers/skills)\""
+cmd //c "mklink /J \"$(cygpath -w ~/.config/opencode/skills/workflows)\" \"$(cygpath -w ~/.config/opencode/workflows/skills)\""
 
 # 6. Restart OpenCode
 ```
@@ -181,7 +181,7 @@ use skill tool to list skills
 Use OpenCode's native `skill` tool to load a specific skill:
 
 ```
-use skill tool to load superpowers/brainstorming
+use skill tool to load workflows/brainstorming
 ```
 
 ### Personal Skills
@@ -233,17 +233,17 @@ OpenCode discovers skills from these locations:
 
 1. **Project skills** (`.opencode/skills/`) - Highest priority
 2. **Personal skills** (`~/.config/opencode/skills/`)
-3. **Superpowers skills** (`~/.config/opencode/skills/superpowers/`) - via symlink
+3. **Workflows skills** (`~/.config/opencode/skills/workflows/`) - via symlink
 
 ## Features
 
 ### Automatic Context Injection
 
-The plugin automatically injects superpowers context via the `experimental.chat.system.transform` hook. This adds the "using-superpowers" skill content to the system prompt on every request.
+The plugin automatically injects workflows context via the `experimental.chat.system.transform` hook. This adds the "using-workflows" skill content to the system prompt on every request.
 
 ### Native Skills Integration
 
-Superpowers uses OpenCode's native `skill` tool for skill discovery and loading. Skills are symlinked into `~/.config/opencode/skills/superpowers/` so they appear alongside your personal and project skills.
+Workflows uses OpenCode's native `skill` tool for skill discovery and loading. Skills are symlinked into `~/.config/opencode/skills/workflows/` so they appear alongside your personal and project skills.
 
 ### Tool Mapping
 
@@ -258,22 +258,22 @@ Skills written for Claude Code are automatically adapted for OpenCode. The boots
 
 ### Plugin Structure
 
-**Location:** `~/.config/opencode/superpowers/.opencode/plugins/superpowers.js`
+**Location:** `~/.config/opencode/workflows/.opencode/plugins/workflows.js`
 
 **Components:**
 - `experimental.chat.system.transform` hook for bootstrap injection
-- Reads and injects the "using-superpowers" skill content
+- Reads and injects the "using-workflows" skill content
 
 ### Skills
 
-**Location:** `~/.config/opencode/skills/superpowers/` (symlink to `~/.config/opencode/superpowers/skills/`)
+**Location:** `~/.config/opencode/skills/workflows/` (symlink to `~/.config/opencode/workflows/skills/`)
 
 Skills are discovered by OpenCode's native skill system. Each skill has a `SKILL.md` file with YAML frontmatter.
 
 ## Updating
 
 ```bash
-cd ~/.config/opencode/superpowers
+cd ~/.config/opencode/workflows
 git pull
 ```
 
@@ -283,14 +283,14 @@ Restart OpenCode to load the updates.
 
 ### Plugin not loading
 
-1. Check plugin exists: `ls ~/.config/opencode/superpowers/.opencode/plugins/superpowers.js`
+1. Check plugin exists: `ls ~/.config/opencode/workflows/.opencode/plugins/workflows.js`
 2. Check symlink/junction: `ls -l ~/.config/opencode/plugins/` (macOS/Linux) or `dir /AL %USERPROFILE%\.config\opencode\plugins` (Windows)
 3. Check OpenCode logs: `opencode run "test" --print-logs --log-level DEBUG`
 4. Look for plugin loading message in logs
 
 ### Skills not found
 
-1. Verify skills symlink: `ls -l ~/.config/opencode/skills/superpowers` (should point to superpowers/skills/)
+1. Verify skills symlink: `ls -l ~/.config/opencode/skills/workflows` (should point to workflows/skills/)
 2. Use OpenCode's `skill` tool to list available skills
 3. Check skill structure: each skill needs a `SKILL.md` file with valid frontmatter
 
@@ -302,14 +302,14 @@ If you see `Cannot find module` errors on Windows:
 
 ### Bootstrap not appearing
 
-1. Verify using-superpowers skill exists: `ls ~/.config/opencode/superpowers/skills/using-superpowers/SKILL.md`
+1. Verify using-workflows skill exists: `ls ~/.config/opencode/workflows/skills/using-workflows/SKILL.md`
 2. Check OpenCode version supports `experimental.chat.system.transform` hook
 3. Restart OpenCode after plugin changes
 
 ## Getting Help
 
-- Report issues: https://github.com/obra/superpowers/issues
-- Main documentation: https://github.com/obra/superpowers
+- Report issues: https://github.com/obra/workflows/issues
+- Main documentation: https://github.com/obra/workflows
 - OpenCode docs: https://opencode.ai/docs/
 
 ## Testing
@@ -318,13 +318,13 @@ Verify your installation:
 
 ```bash
 # Check plugin loads
-opencode run --print-logs "hello" 2>&1 | grep -i superpowers
+opencode run --print-logs "hello" 2>&1 | grep -i workflows
 
 # Check skills are discoverable
-opencode run "use skill tool to list all skills" 2>&1 | grep -i superpowers
+opencode run "use skill tool to list all skills" 2>&1 | grep -i workflows
 
 # Check bootstrap injection
-opencode run "what superpowers do you have?"
+opencode run "what workflows do you have?"
 ```
 
-The agent should mention having superpowers and be able to list skills from `superpowers/`.
+The agent should mention having workflows and be able to list skills from `workflows/`.

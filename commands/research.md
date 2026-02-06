@@ -3,4 +3,4 @@ description: "Deep research using subagents, web search, and scraping. Decompose
 argument-hint: "[topic to research]"
 ---
 
-Invoke the superpowers:research skill for: $ARGUMENTS
+Invoke the workflows:research skill for: $ARGUMENTS
